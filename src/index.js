@@ -20,6 +20,7 @@ pub.validate = function (event) {
 pub.create = function (event, _context, callback) {
     var params = event.ResourceProperties;
     delete params.ServiceToken;
+    params.Policy = JSON.stringify(params.Policy);
     ses.putIdentityPolicy(params, function (error) {
         return callback(error);
     });
